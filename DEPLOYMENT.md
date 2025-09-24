@@ -157,3 +157,4 @@ Herhangi bir sorun yaşarsanız:
 3. Supabase bağlantısını test edin
 4. Browser console'u kontrol edin
 
+
