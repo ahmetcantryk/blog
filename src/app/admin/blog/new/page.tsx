@@ -81,7 +81,7 @@ export default function NewBlogPost() {
     // Generate canonical URL from title
     const slug = generateSlug(value)
     if (slug && (!canonicalUrl || canonicalUrl.includes(generateSlug(title)))) {
-      setCanonicalUrl(`https://yourdomain.com/blog/${slug}`)
+      setCanonicalUrl(`https://woyable.com/blog/${slug}`)
     }
   }
 
@@ -448,7 +448,7 @@ export default function NewBlogPost() {
                       id="canonicalUrl"
                       value={canonicalUrl}
                       onChange={(e) => setCanonicalUrl(e.target.value)}
-                      placeholder="https://yourdomain.com/blog/post-slug"
+                      placeholder="https://woyable.com/blog/post-slug"
                     />
                     <div className="text-xs text-muted-foreground">
                       {title && !canonicalUrl ? 'Başlıktan otomatik oluşturulacak' : 'Özelleştirilmiş'}

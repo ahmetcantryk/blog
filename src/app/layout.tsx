@@ -16,14 +16,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Daily Words - Güncel Blog Yazıları",
-    template: "%s | Daily Words"
+    default: "Woyable - Güncel Blog Yazıları",
+    template: "%s | Woyable"
   },
   description: "Her gün yeni blog yazıları, her gün yeni keşifler - Teknoloji, yazılım geliştirme ve yaşam blogu",
   keywords: ["blog", "teknoloji", "yazılım", "geliştirme", "programlama", "web tasarım", "güncel", "türkçe"],
-  authors: [{ name: "Daily Words Team" }],
-  creator: "Daily Words",
-  publisher: "Daily Words",
+  authors: [{ name: "Woyable Team" }],
+  creator: "Woyable",
+  publisher: "Woyable",
   robots: {
     index: true,
     follow: true,
@@ -38,28 +38,28 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'tr_TR',
-    title: 'Daily Words - Güncel Blog Yazıları',
+    title: 'Woyable - Güncel Blog Yazıları',
     description: 'Her gün yeni blog yazıları, her gün yeni keşifler - Teknoloji, yazılım geliştirme ve yaşam blogu',
-    siteName: 'Daily Words',
+    siteName: 'Woyable',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Daily Words - Blog',
+        alt: 'Woyable - Blog',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Daily Words - Güncel Blog Yazıları',
+    title: 'Woyable - Güncel Blog Yazıları',
     description: 'Her gün yeni blog yazıları, her gün yeni keşifler - Teknoloji, yazılım geliştirme ve yaşam blogu',
     images: ['/og-image.jpg'],
-    creator: '@dailywords',
-    site: '@dailywords',
+    creator: '@woyable',
+    site: '@woyable',
   },
   alternates: {
-    canonical: 'https://yourdomain.com',
+    canonical: 'https://woyable.com',
   },
   verification: {
     google: 'your-google-verification-code',
@@ -77,20 +77,20 @@ export default function RootLayout({
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Daily Words",
-    "description": "Güncel blog yazıları, teknoloji, yaşam ve daha fazlası için Daily Words'e hoş geldiniz.",
-    "url": "https://yourdomain.com",
+    "name": "Woyable",
+    "description": "Güncel blog yazıları, teknoloji, yaşam ve daha fazlası için Woyable'e hoş geldiniz.",
+    "url": "https://woyable.com",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://yourdomain.com/search?q={search_term_string}",
+      "target": "https://woyable.com/search?q={search_term_string}",
       "query-input": "required name=search_term_string"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Daily Words",
+      "name": "Woyable",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://yourdomain.com/logo.png"
+        "url": "https://woyable.com/logo.png"
       }
     }
   }
@@ -98,6 +98,20 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-VG3R3KZB1H"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-VG3R3KZB1H');
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Next.js 15 blog application called "Daily Words" built with TypeScript, Tailwind CSS, and Supabase. It's a full-stack blogging platform with admin functionality and optimized for SEO.
+This is a Next.js 15 blog application called "Woyable" built with TypeScript, Tailwind CSS, and Supabase. It's a full-stack blogging platform with admin functionality and optimized for SEO.
 
 ## Development Commands
 

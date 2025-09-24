@@ -10,7 +10,7 @@ export default function BlogNotFound() {
         <div className="container mx-auto px-4 py-4 max-w-7xl">
           <div className="flex justify-center">
             <Link href="/" className="text-2xl font-bold text-slate-800 dark:text-slate-200 hover:text-primary transition-colors">
-              #DailyWords
+              #Woyable
             </Link>
           </div>
         </div>

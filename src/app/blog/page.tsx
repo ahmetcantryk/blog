@@ -8,11 +8,11 @@ import { BlogPost } from "@/app/api/posts/route"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Blog Yazıları - Daily Words",
+  title: "Blog Yazıları - Woyable",
   description: "Teknoloji, yazılım geliştirme ve dijital dönüşüm hakkında güncel blog yazıları. Her gün yeni içeriklerle bilginizi genişletin.",
   keywords: ["blog", "teknoloji", "yazılım geliştirme", "web teknolojileri", "next.js", "react", "typescript", "javascript", "programlama", "tutorial"],
   openGraph: {
-    title: "Blog Yazıları - Daily Words",
+    title: "Blog Yazıları - Woyable",
     description: "Teknoloji, yazılım geliştirme ve dijital dönüşüm hakkında güncel blog yazıları.",
     type: "website",
   },
@@ -139,7 +139,7 @@ export default async function BlogPage({
         <div className="container mx-auto px-4 py-4 max-w-7xl">
           <div className="flex justify-center">
             <Link href="/" className="text-2xl font-bold text-slate-800 dark:text-slate-200 hover:text-primary transition-colors">
-              #DailyWords
+              #Woyable
             </Link>
           </div>
         </div>

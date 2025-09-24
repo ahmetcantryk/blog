@@ -87,7 +87,7 @@ export default function EditBlogPost() {
     // Generate canonical URL from title
     const slug = generateSlug(value)
     if (slug && (!canonicalUrl || canonicalUrl.includes(generateSlug(title)))) {
-      setCanonicalUrl(`https://yourdomain.com/blog/${slug}`)
+      setCanonicalUrl(`https://woyable.com/blog/${slug}`)
     }
   }
 
@@ -154,7 +154,7 @@ export default function EditBlogPost() {
     // Generate canonical URL from title
     if (title) {
       const slug = generateSlug(title)
-      setCanonicalUrl(`https://yourdomain.com/blog/${slug}`)
+      setCanonicalUrl(`https://woyable.com/blog/${slug}`)
     }
     
     setSuccess("SEO alanları başarıyla senkronize edildi!")
@@ -186,7 +186,7 @@ export default function EditBlogPost() {
         setMetaTitle(blogPost.metaTitle || blogPost.title || "")
         setMetaDescription(blogPost.metaDescription || blogPost.excerpt || "")
         setMetaKeywords(blogPost.metaKeywords || blogPost.tags || [])
-        setCanonicalUrl(blogPost.canonicalUrl || `https://yourdomain.com/blog/${blogPost.slug}`)
+        setCanonicalUrl(blogPost.canonicalUrl || `https://woyable.com/blog/${blogPost.slug}`)
         setOgTitle(blogPost.ogTitle || blogPost.title || "")
         setOgDescription(blogPost.ogDescription || blogPost.excerpt || "")
         setOgImage(blogPost.ogImage || blogPost.thumbnail || "")
@@ -608,7 +608,7 @@ export default function EditBlogPost() {
                       id="canonicalUrl"
                       value={canonicalUrl}
                       onChange={(e) => setCanonicalUrl(e.target.value)}
-                      placeholder="https://yourdomain.com/blog/post-slug"
+                      placeholder="https://woyable.com/blog/post-slug"
                     />
                     <div className="text-xs text-muted-foreground">
                       {title && canonicalUrl.includes(generateSlug(title)) ? 'Başlıktan senkronize' : 'Özelleştirilmiş'}

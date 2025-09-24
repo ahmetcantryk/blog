@@ -1,8 +1,8 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: 'Admin Panel - Daily Words',
-  description: 'Daily Words blog yonetim paneli',
+  title: 'Admin Panel - Woyable',
+  description: 'Woyable blog yonetim paneli',
   robots: {
     index: false,
     follow: false,

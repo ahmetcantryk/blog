@@ -104,7 +104,7 @@ export default async function BlogLayout({
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Daily Words",
+      "name": "Woyable",
       "logo": {
         "@type": "ImageObject",
         "url": "/logo.png"
@@ -114,7 +114,7 @@ export default async function BlogLayout({
     "dateModified": post.publishDate,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://yourdomain.com/blog/${post.slug}`
+      "@id": `https://woyable.com/blog/${post.slug}`
     },
     "keywords": post.tags.join(", "),
     "articleSection": "Blog",

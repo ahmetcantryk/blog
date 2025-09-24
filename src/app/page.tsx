@@ -7,23 +7,23 @@ import { getAllBlogPosts } from "@/lib/supabase-blog-storage"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Daily Words - Teknoloji ve Yazılım Blogu",
+  title: "Woyable - Teknoloji ve Yazılım Blogu",
   description: "Her gün yeni blog yazıları, her gün yeni keşifler. Teknoloji, yazılım geliştirme, web teknolojileri ve dijital dönüşüm hakkında güncel blog içerikleri.",
-  keywords: ["daily words", "blog", "teknoloji", "yazılım geliştirme", "web teknolojileri", "next.js", "react", "typescript", "javascript", "yapay zeka", "programlama", "tutorial", "blog yazıları", "rehberler"],
-  authors: [{ name: "Daily Words" }],
-  creator: "Daily Words",
-  publisher: "Daily Words",
+  keywords: ["Woyable", "blog", "teknoloji", "yazılım geliştirme", "web teknolojileri", "next.js", "react", "typescript", "javascript", "yapay zeka", "programlama", "tutorial", "blog yazıları", "rehberler"],
+  authors: [{ name: "Woyable" }],
+  creator: "Woyable",
+  publisher: "Woyable",
   openGraph: {
     type: "website",
     locale: "tr_TR",
-    url: "https://dailywords.com",
-    title: "Daily Words - Teknoloji ve Yazılım Blogu",
+    url: "https://woyable.com",
+    title: "Woyable - Teknoloji ve Yazılım Blogu",
     description: "Her gün yeni blog yazıları, her gün yeni keşifler. Teknoloji, yazılım geliştirme, web teknolojileri ve dijital dönüşüm hakkında güncel blog içerikleri.",
-    siteName: "Daily Words",
+    siteName: "Woyable",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Daily Words - Teknoloji ve Yazılım Blogu",
+    title: "Woyable - Teknoloji ve Yazılım Blogu",
     description: "Her gün yeni blog yazıları, her gün yeni keşifler. Teknoloji, yazılım geliştirme, web teknolojileri ve dijital dönüşüm hakkında güncel blog içerikleri.",
   },
   robots: {
@@ -48,7 +48,7 @@ export default async function Home() {
       <AutoScroll />
       {/* Hero Section */}
       <Hero
-        title="#DailyWords"
+        title="#Woyable" 
         subtitle="Her gün yeni blog yazıları, her gün yeni keşifler. Teknoloji dünyasından güncel içerikler, yazılım geliştirme rehberleri ve dijital dönüşüm hikayeleri. Blog okuma alışkanlığınızı güçlendirin."
         actions={[
           {

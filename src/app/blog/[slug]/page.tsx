@@ -37,7 +37,7 @@ export async function generateMetadata({
     }
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://yourdomain.com'
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://woyable.com'
 
   return {
     title: post.metaTitle || post.title,
@@ -45,14 +45,14 @@ export async function generateMetadata({
     keywords: post.metaKeywords || post.tags,
     authors: [{ name: post.author }],
     creator: post.author,
-    publisher: 'Daily Words',
+    publisher: 'Woyable',
     openGraph: {
       type: 'article',
       locale: 'tr_TR',
       url: `${baseUrl}/blog/${post.slug}`,
       title: post.ogTitle || post.title,
       description: post.ogDescription || post.excerpt,
-      siteName: 'Daily Words',
+      siteName: 'Woyable',
       images: [
         {
           url: post.ogImage || post.thumbnail,
@@ -70,7 +70,7 @@ export async function generateMetadata({
       title: post.twitterTitle || post.title,
       description: post.twitterDescription || post.excerpt,
       images: [post.twitterImage || post.thumbnail],
-      creator: '@dailywords',
+      creator: '@woyable',
     },
     alternates: {
       canonical: post.canonicalUrl || `${baseUrl}/blog/${post.slug}`,
@@ -144,17 +144,17 @@ export default async function BlogDetailPage({
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Daily Words",
+      "name": "Woyable",
       "logo": {
         "@type": "ImageObject",
-        "url": `${process.env.NEXT_PUBLIC_APP_URL || 'https://yourdomain.com'}/logo.png`
+        "url": `${process.env.NEXT_PUBLIC_APP_URL || 'https://woyable.com'}/logo.png`
       }
     },
     "datePublished": post.publishDate,
     "dateModified": post.publishDate,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `${process.env.NEXT_PUBLIC_APP_URL || 'https://yourdomain.com'}/blog/${post.slug}`
+      "@id": `${process.env.NEXT_PUBLIC_APP_URL || 'https://woyable.com'}/blog/${post.slug}`
     },
     "keywords": post.tags.join(", "),
     "wordCount": post.content.length,
