@@ -12,6 +12,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AdminLayout } from "@/components/admin-layout"
 import { RichTextEditor } from "@/components/rich-text-editor"
 import { Checkbox } from "@/components/ui/checkbox"
+import { ImageUpload } from "@/components/image-upload"
 import { ArrowLeft, Save, Plus, X, Loader2, ChevronRight, ChevronDown, Settings } from "lucide-react"
 
 export default function NewBlogPost() {
@@ -302,15 +303,13 @@ export default function NewBlogPost() {
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="thumbnail">Thumbnail URL</Label>
-                    <Input
-                      id="thumbnail"
-                      value={thumbnail}
-                      onChange={(e) => handleThumbnailChange(e.target.value)}
-                      placeholder="https://images.unsplash.com/photo-..."
-                    />
-                  </div>
+                  <ImageUpload
+                    label="Thumbnail Görseli"
+                    value={thumbnail}
+                    onChange={handleThumbnailChange}
+                    type="thumbnail"
+                    placeholder="Thumbnail görsel URL'si girin"
+                  />
 
                   <div className="space-y-2">
                     <Label htmlFor="readTime">Okuma Süresi (dakika)</Label>
@@ -492,18 +491,13 @@ export default function NewBlogPost() {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="ogImage">OG Görsel URL</Label>
-                    <Input
-                      id="ogImage"
-                      value={ogImage}
-                      onChange={(e) => setOgImage(e.target.value)}
-                      placeholder="Sosyal medyada görünecek görsel"
-                    />
-                    <div className="text-xs text-muted-foreground">
-                      {thumbnail && !ogImage ? 'Thumbnail\'den otomatik' : 'Özelleştirilmiş'}
-                    </div>
-                  </div>
+                  <ImageUpload
+                    label="OpenGraph Görseli"
+                    value={ogImage}
+                    onChange={setOgImage}
+                    type="og-image"
+                    placeholder="Sosyal medyada görünecek görsel URL'si"
+                  />
                 </CardContent>
               </Card>
 
@@ -542,18 +536,13 @@ export default function NewBlogPost() {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="twitterImage">Twitter Görsel URL</Label>
-                    <Input
-                      id="twitterImage"
-                      value={twitterImage}
-                      onChange={(e) => setTwitterImage(e.target.value)}
-                      placeholder="Twitter'da görünecek görsel"
-                    />
-                    <div className="text-xs text-muted-foreground">
-                      {thumbnail && !twitterImage ? 'Thumbnail\'den otomatik' : 'Özelleştirilmiş'}
-                    </div>
-                  </div>
+                  <ImageUpload
+                    label="Twitter Görseli"
+                    value={twitterImage}
+                    onChange={setTwitterImage}
+                    type="og-image"
+                    placeholder="Twitter'da görünecek görsel URL'si"
+                  />
                 </CardContent>
                   </Card>
                 </div>
