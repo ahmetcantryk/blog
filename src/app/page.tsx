@@ -7,6 +7,9 @@ import { Logo } from "@/components/logo"
 import { getAllBlogPosts } from "@/lib/supabase-blog-storage"
 import { Metadata } from "next"
 
+// Disable caching for real-time updates
+export const revalidate = 0
+
 export const metadata: Metadata = {
   title: "Woyable.com - Teknoloji ve Yazılım Blogu",
   description: "Her gün yeni blog yazıları, her gün yeni keşifler. Teknoloji, yazılım geliştirme, web teknolojileri ve dijital dönüşüm hakkında güncel blog içerikleri.",
@@ -41,7 +44,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  // Server-side data fetching for initial blog posts
+  // Server-side data fetching for initial blog posts - disable cache for real-time updates
   const recentPosts = await getAllBlogPosts(1, 8)
 
   return (

@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getAllBlogPosts, getBlogPostsCount } from '@/lib/supabase-blog-storage'
 
+// Disable caching for real-time updates
+export const revalidate = 0
+
 export interface BlogPost {
   id: number
   title: string

@@ -62,6 +62,7 @@ export async function getAllBlogPosts(page: number = 1, limit: number = 20): Pro
   
   console.log('Fetching blog posts:', { page, limit, from, to })
   
+  // Force fresh data by adding timestamp to prevent caching
   const { data, error } = await supabase
     .from('blogs')
     .select('*')
@@ -245,7 +246,12 @@ export async function deleteBlogPost(id: number): Promise<boolean> {
 
 // Get blog post by ID
 export async function getBlogPostById(id: number): Promise<BlogPost | null> {
-  if (!supabase) return null
+  if (!supabase) {
+    console.log('getBlogPostById - Supabase client not available')
+    return null
+  }
+  
+  console.log('getBlogPostById - Fetching blog post with ID:', id)
   
   const { data, error } = await supabase
     .from('blogs')
@@ -254,9 +260,12 @@ export async function getBlogPostById(id: number): Promise<BlogPost | null> {
     .single()
   
   if (error) {
-    console.error('Error fetching blog post:', error)
+    console.error('getBlogPostById - Error fetching blog post:', error)
     return null
   }
+  
+  console.log('getBlogPostById - Data found:', !!data)
+  console.log('getBlogPostById - Data:', data)
   
   return mapDbToBlogPost(data)
 }

@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { updateBlogPost, deleteBlogPost, getBlogPostById } from '@/lib/supabase-blog-storage'
 import { getTokenFromRequest, verifyToken } from '@/lib/supabase-auth'
 
+// Disable caching for real-time updates
+export const revalidate = 0
+
 // Middleware to check admin authentication
 function checkAdminAuth(request: NextRequest): NextResponse | null {
   const cookieToken = request.cookies.get('admin-token')?.value
@@ -36,16 +39,25 @@ export async function GET(
   
   try {
     const { id: idParam } = await params
+    console.log('Blog edit API - ID param:', idParam)
+    
     const id = parseInt(idParam)
+    console.log('Blog edit API - Parsed ID:', id)
+    
     if (isNaN(id)) {
+      console.log('Blog edit API - Invalid ID:', idParam)
       return NextResponse.json(
         { error: 'Invalid blog post ID' },
         { status: 400 }
       )
     }
     
+    console.log('Blog edit API - Fetching blog post with ID:', id)
     const post = await getBlogPostById(id)
+    console.log('Blog edit API - Post found:', !!post)
+    
     if (!post) {
+      console.log('Blog edit API - Post not found for ID:', id)
       return NextResponse.json(
         { error: 'Blog post not found' },
         { status: 404 }

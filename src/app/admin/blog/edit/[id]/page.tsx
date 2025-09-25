@@ -169,11 +169,16 @@ export default function EditBlogPost() {
 
   const loadBlogPost = async () => {
     try {
+      console.log('Edit page - Loading blog post with ID:', postId)
       const response = await fetch(`/api/admin/blog/${postId}`)
+      console.log('Edit page - Response status:', response.status)
+      
       const data = await response.json()
+      console.log('Edit page - Response data:', data)
 
       if (response.ok) {
         const blogPost = data.post
+        console.log('Edit page - Blog post loaded:', blogPost)
         setPost(blogPost)
         setTitle(blogPost.title)
         setExcerpt(blogPost.excerpt)
@@ -195,9 +200,11 @@ export default function EditBlogPost() {
         setTwitterDescription(blogPost.twitterDescription || blogPost.excerpt || "")
         setTwitterImage(blogPost.twitterImage || blogPost.thumbnail || "")
       } else {
+        console.error('Edit page - Error response:', data)
         setError(data.error || "Blog yazısı yüklenemedi")
       }
     } catch (error) {
+      console.error('Edit page - Network error:', error)
       setError("Network error. Please try again.")
     } finally {
       setLoading(false)

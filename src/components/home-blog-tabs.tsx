@@ -23,6 +23,28 @@ function HomeBlogTabs({ initialPosts }: HomeBlogTabsProps) {
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
 
+  // Refresh posts when component mounts to get latest data
+  useEffect(() => {
+    const refreshPosts = async () => {
+      try {
+        const cacheBuster = `?t=${Date.now()}`
+        const response = await fetch(`/api/posts?page=1&limit=8${cacheBuster}`)
+        const data = await response.json()
+        
+        if (response.ok) {
+          setRecentPosts(data.posts)
+          setAllPosts(data.posts)
+          setFilteredPosts(data.posts)
+        }
+      } catch (error) {
+        console.error('Error refreshing posts:', error)
+      }
+    }
+    
+    // Refresh posts on mount
+    refreshPosts()
+  }, [])
+
   // Load more posts
   const loadMorePosts = useCallback(async () => {
     if (loadingMore) return
@@ -33,7 +55,9 @@ function HomeBlogTabs({ initialPosts }: HomeBlogTabsProps) {
     try {
       await new Promise(resolve => setTimeout(resolve, 200))
       
-      const response = await fetch(`/api/posts?page=${recentPage + 1}&limit=8`)
+      // Add cache-busting parameter to force fresh data
+      const cacheBuster = `?t=${Date.now()}`
+      const response = await fetch(`/api/posts?page=${recentPage + 1}&limit=8${cacheBuster}`)
       const data = await response.json()
       
       setRecentPosts(prev => [...prev, ...data.posts])

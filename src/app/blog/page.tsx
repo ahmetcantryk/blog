@@ -8,6 +8,9 @@ import { getAllBlogPosts } from "@/lib/supabase-blog-storage"
 import { BlogPost } from "@/app/api/posts/route"
 import { Metadata } from "next"
 
+// Disable caching for real-time updates
+export const revalidate = 0
+
 export const metadata: Metadata = {
   title: "Blog Yazıları - Woyable",
   description: "Teknoloji, yazılım geliştirme ve dijital dönüşüm hakkında güncel blog yazıları. Her gün yeni içeriklerle bilginizi genişletin.",
