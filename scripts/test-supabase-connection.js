@@ -1,5 +1,5 @@
 // Test Supabase connection and data
-import { supabase } from '../src/lib/supabase'
+const { supabase } = require('../src/lib/supabase')
 
 async function testSupabase() {
   console.log('🔍 Testing Supabase connection...')
