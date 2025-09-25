@@ -23,7 +23,8 @@ import {
   Star,
   BarChart3,
   Activity,
-  Target
+  Target,
+  Map
 } from "lucide-react"
 import { BlogPost } from "@/app/api/posts/route"
 
@@ -201,7 +202,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Stats Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           <Card className="border-blue-200 bg-blue-50/50">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
               <CardTitle className="text-sm font-medium text-blue-700">Toplam Blog</CardTitle>
@@ -250,6 +251,19 @@ export default function AdminDashboard() {
               <div className="text-3xl font-bold text-orange-900">{avgReadTime}</div>
               <p className="text-xs text-orange-600 mt-1">
                 dakika
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-teal-200 bg-teal-50/50">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+              <CardTitle className="text-sm font-medium text-teal-700">Sitemap</CardTitle>
+              <Map className="h-5 w-5 text-teal-600" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold text-teal-900">{totalPosts + 2}</div>
+              <p className="text-xs text-teal-600 mt-1">
+                Otomatik güncellenir
               </p>
             </CardContent>
           </Card>

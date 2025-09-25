@@ -54,6 +54,12 @@ export function BlogCard({ post, layout = "vertical" }: BlogCardProps) {
                   fill
                   className="object-cover transition-transform group-hover:scale-105"
                   sizes="192px"
+                  unoptimized={post.thumbnail.includes('supabase.co')}
+                  onError={(e) => {
+                    console.error('Image load error:', post.thumbnail, e)
+                    // Fallback to a placeholder
+                    e.currentTarget.src = '/placeholder-image.svg'
+                  }}
                 />
                 {post.featured && (
                   <Badge className="absolute top-2 left-2 bg-primary text-xs">
@@ -139,6 +145,12 @@ export function BlogCard({ post, layout = "vertical" }: BlogCardProps) {
               fill
               className="object-cover transition-transform group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 1200px"
+              unoptimized={post.thumbnail.includes('supabase.co')}
+              onError={(e) => {
+                console.error('Image load error:', post.thumbnail, e)
+                // Fallback to a placeholder
+                e.currentTarget.src = '/placeholder-image.svg'
+              }}
             />
             {post.featured && (
               <Badge className="absolute top-4 left-4 bg-primary shadow-lg">

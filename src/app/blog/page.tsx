@@ -3,6 +3,7 @@ import Link from "next/link"
 import { BlogCardSkeleton } from "@/components/blog-card-skeleton"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { BlogClient } from "@/components/blog-client"
+import { Logo } from "@/components/logo"
 import { getAllBlogPosts } from "@/lib/supabase-blog-storage"
 import { BlogPost } from "@/app/api/posts/route"
 import { Metadata } from "next"
@@ -138,9 +139,7 @@ export default async function BlogPage({
       <div className="border-b bg-muted/20">
         <div className="container mx-auto px-4 py-4 max-w-7xl">
           <div className="flex justify-center">
-            <Link href="/" className="text-2xl font-bold text-slate-800 dark:text-slate-200 hover:text-primary transition-colors">
-              #Woyable
-            </Link>
+            <Logo size="md" />
           </div>
         </div>
       </div>

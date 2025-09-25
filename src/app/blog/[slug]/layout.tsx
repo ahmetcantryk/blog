@@ -11,13 +11,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   
   if (!post) {
     return {
-      title: 'Blog yazısı bulunamadı - EveryDayBlog',
+      title: 'Blog yazısı bulunamadı - Woyable.com',
       description: 'Aradığınız blog yazısı bulunamadı.'
     }
   }
 
   // Use custom SEO fields if available, otherwise fallback to defaults
-  const metaTitle = post.metaTitle || `${post.title} - EveryDayBlog`
+  const metaTitle = post.metaTitle || `${post.title} - Woyable.com`
   const metaDescription = post.metaDescription || post.excerpt
   const metaKeywords = post.metaKeywords && post.metaKeywords.length > 0 ? post.metaKeywords : post.tags
   
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: metaKeywords,
     authors: [{ name: post.author }],
     creator: post.author,
-    publisher: 'EveryDayBlog',
+    publisher: 'Woyable.com',
     ...(post.canonicalUrl && { 
       alternates: { 
         canonical: post.canonicalUrl 
@@ -57,15 +57,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       authors: [post.author],
       publishedTime: post.publishDate,
       tags: post.tags,
-      siteName: 'EveryDayBlog',
+      siteName: 'Woyable.com',
     },
     twitter: {
       card: 'summary_large_image',
       title: twitterTitle,
       description: twitterDescription,
       images: [twitterImage],
-      creator: '@everydayblog',
-      site: '@everydayblog',
+      creator: '@woyable',
+      site: '@woyable',
     },
     robots: {
       index: true,
@@ -104,7 +104,7 @@ export default async function BlogLayout({
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Woyable",
+      "name": "Woyable.com",
       "logo": {
         "@type": "ImageObject",
         "url": "/logo.png"
@@ -136,3 +136,8 @@ export default async function BlogLayout({
     </>
   )
 }
+
+
+
+
+

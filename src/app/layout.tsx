@@ -77,8 +77,8 @@ export default function RootLayout({
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Woyable",
-    "description": "Güncel blog yazıları, teknoloji, yaşam ve daha fazlası için Woyable'e hoş geldiniz.",
+    "name": "Woyable.com",
+    "description": "Güncel blog yazıları, teknoloji, yaşam ve daha fazlası için Woyable.com'e hoş geldiniz.",
     "url": "https://woyable.com",
     "potentialAction": {
       "@type": "SearchAction",
@@ -87,7 +87,7 @@ export default function RootLayout({
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Woyable",
+      "name": "Woyable.com",
       "logo": {
         "@type": "ImageObject",
         "url": "https://woyable.com/logo.png"

@@ -5,6 +5,7 @@ import { Metadata } from "next"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
+import { Logo } from "@/components/logo"
 import { 
   Carousel,
   CarouselContent,
@@ -32,7 +33,7 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: 'Blog Yazısı Bulunamadı',
+      title: 'Blog Yazısı Bulunamadı - Woyable.com',
       description: 'Aradığınız blog yazısı bulunamadı.'
     }
   }
@@ -45,7 +46,7 @@ export async function generateMetadata({
     keywords: post.metaKeywords || post.tags,
     authors: [{ name: post.author }],
     creator: post.author,
-    publisher: 'Woyable',
+    publisher: 'Woyable.com',
     openGraph: {
       type: 'article',
       locale: 'tr_TR',
@@ -144,7 +145,7 @@ export default async function BlogDetailPage({
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Woyable",
+      "name": "Woyable.com",
       "logo": {
         "@type": "ImageObject",
         "url": `${process.env.NEXT_PUBLIC_APP_URL || 'https://woyable.com'}/logo.png`
@@ -170,6 +171,15 @@ export default async function BlogDetailPage({
         }}
       />
       
+      {/* Logo Header */}
+      <div className="border-b bg-muted/20">
+        <div className="container mx-auto px-4 py-4 max-w-7xl">
+          <div className="flex justify-center">
+            <Logo size="md" />
+          </div>
+        </div>
+      </div>
+      
       {/* Compact Header Strip */}
       <div className="border-b bg-muted/20">
         <div className="container mx-auto px-4 py-6 max-w-4xl">
@@ -181,20 +191,34 @@ export default async function BlogDetailPage({
               fill
               className="object-cover"
               priority
+              unoptimized={post.thumbnail.includes('supabase.co')}
             />
           </div>
 
           {/* Compact Meta Strip */}
           <div className="space-y-4">
             {/* Tags Row */}
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <Badge key={tag} variant="secondary" className="text-xs">
-                  {tag}
-                </Badge>
-              ))}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium text-muted-foreground">Etiketler:</span>
+                <div className="flex flex-wrap gap-2">
+                  {post.tags && post.tags.length > 0 ? (
+                    post.tags.map((tag) => (
+                      <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`}>
+                        <Badge variant="secondary" className="text-xs hover:bg-secondary/80 transition-colors cursor-pointer">
+                          #{tag}
+                        </Badge>
+                      </Link>
+                    ))
+                  ) : (
+                    <Badge variant="outline" className="text-xs text-muted-foreground">
+                      Etiket yok
+                    </Badge>
+                  )}
+                </div>
+              </div>
               {post.featured && (
-                <Badge className="bg-primary text-xs">⭐ Öne Çıkan</Badge>
+                <Badge className="bg-primary text-xs w-fit">⭐ Öne Çıkan</Badge>
               )}
             </div>
 
@@ -241,6 +265,22 @@ export default async function BlogDetailPage({
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </div>
+
+        {/* Tags Section */}
+        {post.tags && post.tags.length > 0 && (
+          <div className="mt-8 p-6 bg-muted/20 rounded-lg">
+            <h3 className="text-lg font-semibold mb-4">Bu yazıyla ilgili etiketler:</h3>
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`}>
+                  <Badge variant="secondary" className="text-sm hover:bg-secondary/80 transition-colors cursor-pointer">
+                    #{tag}
+                  </Badge>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         <Separator className="my-8" />
 

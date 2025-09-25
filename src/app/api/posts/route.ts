@@ -35,8 +35,12 @@ export async function GET(request: NextRequest) {
   const sort = searchParams.get('sort') || 'newest'
   
   try {
+    console.log('API Posts Route - Fetching posts with params:', { page, limit, search, tag, sort })
+    
     // Get all blog posts for filtering (we'll do server-side filtering)
     const allPosts = await getAllBlogPosts(1, 1000) // Get more posts for filtering
+    
+    console.log('API Posts Route - All posts fetched:', allPosts.length)
     
     // Apply filters
     let filteredPosts = allPosts
@@ -84,6 +88,12 @@ export async function GET(request: NextRequest) {
       totalCount,
       hasMore: endIndex < totalCount
     }
+    
+    console.log('API Posts Route - Response:', { 
+      postsCount: paginatedPosts.length, 
+      totalCount, 
+      hasMore: response.hasMore 
+    })
     
     return NextResponse.json(response)
   } catch (error) {

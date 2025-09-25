@@ -23,6 +23,21 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'ifpmquyhscmfdyjpkwaw.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/**',
+      },
+      // Dynamic Supabase hostname from environment
+      ...(process.env.NEXT_PUBLIC_SUPABASE_URL
+        ? [{
+            protocol: 'https' as const,
+            hostname: new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname,
+            port: '',
+            pathname: '/storage/v1/object/public/**',
+          }]
+        : []),
     ],
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 60,

@@ -1,10 +1,11 @@
 import { MetadataRoute } from 'next'
+import { getAllBlogPosts } from '@/lib/supabase-blog-storage'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://woyable.com'
   
-  // Build time'da sadece statik sayfalar (runtime'da dinamik olacak)
-  return [
+  // Static pages
+  const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -18,6 +19,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
   ]
+
+  try {
+    // Get all blog posts dynamically
+    const blogPosts = await getAllBlogPosts(1, 1000) // Get all posts
+    
+    // Blog post pages
+    const blogPages: MetadataRoute.Sitemap = blogPosts.map(post => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.publishDate),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    }))
+
+    return [...staticPages, ...blogPages]
+  } catch (error) {
+    console.error('Error generating sitemap:', error)
+    return staticPages
+  }
 }
 
 

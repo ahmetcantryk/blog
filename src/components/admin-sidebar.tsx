@@ -117,7 +117,7 @@ export function AdminSidebar({ className }: SidebarProps) {
                 </div>
                 <div>
                   <h1 className="text-lg font-semibold">Admin Panel</h1>
-                  <p className="text-xs text-muted-foreground">EveryDayBlog</p>
+                  <p className="text-xs text-muted-foreground">Woyable.com</p>
                 </div>
               </div>
             )}

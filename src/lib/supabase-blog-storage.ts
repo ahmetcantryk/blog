@@ -1,5 +1,6 @@
 // src/lib/supabase-blog-storage.ts
 import { supabase, supabaseAdmin } from './supabase'
+import { updateSitemap } from './sitemap-generator'
 
 export interface BlogPost {
   id: number
@@ -59,6 +60,8 @@ export async function getAllBlogPosts(page: number = 1, limit: number = 20): Pro
   const from = (page - 1) * limit
   const to = from + limit - 1
   
+  console.log('Fetching blog posts:', { page, limit, from, to })
+  
   const { data, error } = await supabase
     .from('blogs')
     .select('*')
@@ -70,7 +73,9 @@ export async function getAllBlogPosts(page: number = 1, limit: number = 20): Pro
     return []
   }
   
-  return data.map(mapDbToBlogPost)
+  console.log('Blog posts fetched:', data?.length || 0, 'posts')
+  
+  return data?.map(mapDbToBlogPost) || []
 }
 
 // Get total count for pagination
@@ -107,7 +112,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
   return mapDbToBlogPost(data)
 }
 
-// Create blog post
+// Create blog post with automatic sitemap update
 export async function createBlogPost(newPost: NewBlogPost): Promise<BlogPost | null> {
   const slug = generateSlug(newPost.title)
   
@@ -143,10 +148,21 @@ export async function createBlogPost(newPost: NewBlogPost): Promise<BlogPost | n
     return null
   }
   
-  return mapDbToBlogPost(data)
+  const blogPost = mapDbToBlogPost(data)
+  
+  // Automatically update sitemap after creating blog post
+  try {
+    await updateSitemap()
+    console.log('✅ Sitemap updated after creating blog post')
+  } catch (sitemapError) {
+    console.error('❌ Error updating sitemap after blog creation:', sitemapError)
+    // Don't fail the blog creation if sitemap update fails
+  }
+  
+  return blogPost
 }
 
-// Update blog post
+// Update blog post with automatic sitemap update
 export async function updateBlogPost(id: number, updatedPost: Partial<NewBlogPost>): Promise<BlogPost | null> {
   const updateData: any = {}
   
@@ -189,10 +205,21 @@ export async function updateBlogPost(id: number, updatedPost: Partial<NewBlogPos
     return null
   }
   
-  return mapDbToBlogPost(data)
+  const blogPost = mapDbToBlogPost(data)
+  
+  // Automatically update sitemap after updating blog post
+  try {
+    await updateSitemap()
+    console.log('✅ Sitemap updated after updating blog post')
+  } catch (sitemapError) {
+    console.error('❌ Error updating sitemap after blog update:', sitemapError)
+    // Don't fail the blog update if sitemap update fails
+  }
+  
+  return blogPost
 }
 
-// Delete blog post
+// Delete blog post with automatic sitemap update
 export async function deleteBlogPost(id: number): Promise<boolean> {
   const { error } = await supabaseAdmin
     .from('blogs')
@@ -202,6 +229,15 @@ export async function deleteBlogPost(id: number): Promise<boolean> {
   if (error) {
     console.error('Error deleting blog post:', error)
     return false
+  }
+  
+  // Automatically update sitemap after deleting blog post
+  try {
+    await updateSitemap()
+    console.log('✅ Sitemap updated after deleting blog post')
+  } catch (sitemapError) {
+    console.error('❌ Error updating sitemap after blog deletion:', sitemapError)
+    // Don't fail the blog deletion if sitemap update fails
   }
   
   return true

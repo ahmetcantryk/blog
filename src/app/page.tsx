@@ -3,27 +3,28 @@ import { DayCounter } from "@/components/day-counter"
 import { Hero } from "@/components/blocks/hero"
 import { AutoScroll } from "@/components/auto-scroll"
 import { Breadcrumb } from "@/components/breadcrumb"
+import { Logo } from "@/components/logo"
 import { getAllBlogPosts } from "@/lib/supabase-blog-storage"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Woyable - Teknoloji ve Yazılım Blogu",
+  title: "Woyable.com - Teknoloji ve Yazılım Blogu",
   description: "Her gün yeni blog yazıları, her gün yeni keşifler. Teknoloji, yazılım geliştirme, web teknolojileri ve dijital dönüşüm hakkında güncel blog içerikleri.",
-  keywords: ["Woyable", "blog", "teknoloji", "yazılım geliştirme", "web teknolojileri", "next.js", "react", "typescript", "javascript", "yapay zeka", "programlama", "tutorial", "blog yazıları", "rehberler"],
-  authors: [{ name: "Woyable" }],
-  creator: "Woyable",
-  publisher: "Woyable",
+  keywords: ["Woyable.com", "blog", "teknoloji", "yazılım geliştirme", "web teknolojileri", "next.js", "react", "typescript", "javascript", "yapay zeka", "programlama", "tutorial", "blog yazıları", "rehberler"],
+  authors: [{ name: "Woyable.com" }],
+  creator: "Woyable.com",
+  publisher: "Woyable.com",
   openGraph: {
     type: "website",
     locale: "tr_TR",
     url: "https://woyable.com",
-    title: "Woyable - Teknoloji ve Yazılım Blogu",
+    title: "Woyable.com - Teknoloji ve Yazılım Blogu",
     description: "Her gün yeni blog yazıları, her gün yeni keşifler. Teknoloji, yazılım geliştirme, web teknolojileri ve dijital dönüşüm hakkında güncel blog içerikleri.",
-    siteName: "Woyable",
+    siteName: "Woyable.com",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Woyable - Teknoloji ve Yazılım Blogu",
+    title: "Woyable.com - Teknoloji ve Yazılım Blogu",
     description: "Her gün yeni blog yazıları, her gün yeni keşifler. Teknoloji, yazılım geliştirme, web teknolojileri ve dijital dönüşüm hakkında güncel blog içerikleri.",
   },
   robots: {
@@ -48,7 +49,7 @@ export default async function Home() {
       <AutoScroll />
       {/* Hero Section */}
       <Hero
-        title="#Woyable" 
+        title="Woyable.com" 
         subtitle="Her gün yeni blog yazıları, her gün yeni keşifler. Teknoloji dünyasından güncel içerikler, yazılım geliştirme rehberleri ve dijital dönüşüm hikayeleri. Blog okuma alışkanlığınızı güçlendirin."
         actions={[
           {
@@ -62,12 +63,13 @@ export default async function Home() {
             variant: "default"
           }
         ]}
-        titleClassName="text-6xl md:text-7xl lg:text-8xl font-extrabold text-slate-800 dark:text-slate-200 leading-tight"
+        titleClassName="text-6xl md:text-7xl lg:text-8xl font-extrabold text-blue-600 dark:text-blue-400 leading-tight"
         subtitleClassName="text-xl md:text-2xl max-w-[800px] leading-relaxed text-slate-600 dark:text-slate-400"
         actionsClassName="mt-12"
         className="min-h-screen"
         gradient={false}
         blur={false}
+        useLogo={true}
       />
       
       {/* Blog Section */}
