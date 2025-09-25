@@ -53,11 +53,6 @@ export default async function Home() {
         subtitle="Her gün yeni blog yazıları, her gün yeni keşifler. Teknoloji dünyasından güncel içerikler, yazılım geliştirme rehberleri ve dijital dönüşüm hikayeleri. Blog okuma alışkanlığınızı güçlendirin."
         actions={[
           {
-            label: "Son Blog Yazıları",
-            href: "#blogs",
-            variant: "outline"
-          },
-          {
             label: "Blogları Keşfet",
             href: "#blogs",
             variant: "default"

@@ -102,13 +102,13 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
             {actions && actions.length > 0 && (
               <div className={cn("flex gap-4", actionsClassName)}>
                 {actions.map((action, index) => (
-                  <Button
+                  <Link
                     key={index}
-                    variant={action.variant || "default"}
-                    asChild
+                    href={action.href}
+                    className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white rounded-full bg-[#155dfc] hover:bg-[#155dfc]/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-sm"
                   >
-                    <Link href={action.href}>{action.label}</Link>
-                  </Button>
+                    {action.label}
+                  </Link>
                 ))}
               </div>
             )}
