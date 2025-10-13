@@ -1,37 +1,17 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
-import { env } from './env'
 
-const ADMIN_USERNAME = env.ADMIN_USERNAME
-const ADMIN_PASSWORD = env.ADMIN_PASSWORD
-const JWT_SECRET = env.ADMIN_SECRET_KEY
+const JWT_SECRET = process.env.ADMIN_SECRET_KEY || 'fallback-secret'
 
 export interface AdminUser {
   username: string
   isAdmin: boolean
 }
 
+// This function is deprecated - use supabase-auth.ts instead
 export async function verifyAdminCredentials(username: string, password: string): Promise<boolean> {
-  // Debug logging
-  console.log('Auth Debug:', {
-    providedUsername: username,
-    expectedUsername: ADMIN_USERNAME,
-    providedPassword: password,
-    expectedPassword: ADMIN_PASSWORD,
-    envUsername: process.env.ADMIN_USERNAME,
-    envPassword: process.env.ADMIN_PASSWORD
-  })
-  
-  if (username !== ADMIN_USERNAME) {
-    console.log('Username mismatch')
-    return false
-  }
-  
-  // For development, we'll use plain text comparison
-  // In production, you should hash the password in .env
-  const result = password === ADMIN_PASSWORD
-  console.log('Password match result:', result)
-  return result
+  console.warn('verifyAdminCredentials is deprecated - use supabase-auth.ts instead')
+  return false
 }
 
 export function generateToken(user: AdminUser): string {

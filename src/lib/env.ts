@@ -3,20 +3,18 @@
 
 interface EnvConfig {
   // Admin authentication
-  ADMIN_USERNAME: string
-  ADMIN_PASSWORD: string
   ADMIN_SECRET_KEY: string
-  
+
   // Supabase
   NEXT_PUBLIC_SUPABASE_URL: string
   NEXT_PUBLIC_SUPABASE_ANON_KEY: string
   SUPABASE_SERVICE_ROLE_KEY: string
-  
+
   // App configuration
   NEXT_PUBLIC_APP_URL: string
   NEXT_PUBLIC_SITE_NAME: string
   NEXT_PUBLIC_SITE_DESCRIPTION: string
-  
+
   // Optional
   NODE_ENV: string
 }
@@ -24,8 +22,6 @@ interface EnvConfig {
 // Environment variables validation
 function validateEnv(): EnvConfig {
   const requiredEnvVars = [
-    'ADMIN_USERNAME',
-    'ADMIN_PASSWORD', 
     'ADMIN_SECRET_KEY',
     'NEXT_PUBLIC_SUPABASE_URL',
     'NEXT_PUBLIC_SUPABASE_ANON_KEY',
@@ -54,8 +50,6 @@ function validateEnv(): EnvConfig {
   }
 
   return {
-    ADMIN_USERNAME: process.env.ADMIN_USERNAME || 'admin',
-    ADMIN_PASSWORD: process.env.ADMIN_PASSWORD || 'admin123',
     ADMIN_SECRET_KEY: process.env.ADMIN_SECRET_KEY || 'fallback-secret',
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL || '',
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
@@ -85,7 +79,7 @@ export function logEnvironmentStatus(): void {
   console.log(`- NODE_ENV: ${env.NODE_ENV}`)
   console.log(`- APP_URL: ${env.NEXT_PUBLIC_APP_URL}`)
   console.log(`- Supabase URL: ${env.NEXT_PUBLIC_SUPABASE_URL ? '✅ Set' : '❌ Missing'}`)
-  console.log(`- Admin Username: ${env.ADMIN_USERNAME}`)
+  console.log(`- Admin Secret Key: ${env.ADMIN_SECRET_KEY ? '✅ Set' : '❌ Missing'}`)
   console.log(`- Site Name: ${env.NEXT_PUBLIC_SITE_NAME}`)
 }
 
