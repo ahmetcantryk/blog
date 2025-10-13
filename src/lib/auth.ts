@@ -1,9 +1,10 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
+import { env } from './env'
 
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin'
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123'
-const JWT_SECRET = process.env.ADMIN_SECRET_KEY || 'your-secret-key'
+const ADMIN_USERNAME = env.ADMIN_USERNAME
+const ADMIN_PASSWORD = env.ADMIN_PASSWORD
+const JWT_SECRET = env.ADMIN_SECRET_KEY
 
 export interface AdminUser {
   username: string

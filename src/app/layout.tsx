@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { FixedThemeToggle } from "@/components/fixed-theme-toggle";
 import { Analytics } from "@vercel/analytics/next";
+import '@/lib/dotenv-config'; // Environment variables yükle
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
