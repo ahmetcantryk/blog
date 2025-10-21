@@ -184,7 +184,7 @@ export default async function BlogDetailPage({
       <div className="border-b bg-muted/20">
         <div className="container mx-auto px-4 py-6 max-w-4xl">
           {/* Hero Image - Compact */}
-          <div className="relative overflow-hidden rounded-lg mb-6" style={{ height: '200px' }}>
+          <div className="relative overflow-hidden rounded-lg mb-6" style={{ height: '400px' }}>
             <Image
               src={post.thumbnail}
               alt={post.title}

@@ -5,7 +5,7 @@ export function BlogCardSkeleton() {
   return (
     <Card className="overflow-hidden border shadow-sm w-full max-w-[1000px] mx-auto p-0">
       {/* Görsel Skeleton - 250px yükseklik */}
-      <div className="relative h-[250px] overflow-hidden bg-muted/60">
+      <div className="relative h-[350px] overflow-hidden bg-muted/60">
         <Skeleton className="w-full h-full animate-pulse" />
         {/* Featured badge skeleton */}
         <div className="absolute top-4 left-4">

@@ -35,3 +35,4 @@ if (process.env.NODE_ENV === 'development') {
   console.log(`- NEXT_PUBLIC_APP_URL: ${process.env.NEXT_PUBLIC_APP_URL ? '✅ Set' : '❌ Missing'}`)
 }
 
+

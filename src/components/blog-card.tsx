@@ -138,7 +138,7 @@ export function BlogCard({ post, layout = "vertical" }: BlogCardProps) {
     <Card className="overflow-hidden border hover:shadow-lg transition-shadow w-full max-w-[1000px] mx-auto p-0">
       <Link href={`/blog/${post.slug}`} className="block group">
         {/* Görsel Üstte - 250px yükseklik */}
-        <div className="relative h-[250px] overflow-hidden">
+        <div className="relative h-[350px] overflow-hidden">
             <Image
               src={post.thumbnail}
               alt={post.title}

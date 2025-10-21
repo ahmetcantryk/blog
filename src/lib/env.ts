@@ -83,3 +83,4 @@ export function logEnvironmentStatus(): void {
   console.log(`- Site Name: ${env.NEXT_PUBLIC_SITE_NAME}`)
 }
 
+

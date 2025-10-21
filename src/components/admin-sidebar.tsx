@@ -160,7 +160,7 @@ export function AdminSidebar({ className }: SidebarProps) {
                 "w-full justify-start text-muted-foreground hover:text-foreground",
                 collapsed && "justify-center px-2"
               )}
-              onClick={() => router.push("/")}
+              onClick={() => window.open("/", "_blank")}
             >
               <Home className={cn("h-4 w-4", !collapsed && "mr-3")} />
               {!collapsed && <span>Siteye Git</span>}

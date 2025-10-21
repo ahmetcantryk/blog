@@ -502,10 +502,18 @@ export default function EditBlogPost() {
                       {tags.map((tag) => (
                         <Badge key={tag} variant="secondary" className="flex items-center gap-1">
                           {tag}
-                          <X
-                            className="h-3 w-3 cursor-pointer"
-                            onClick={() => removeTag(tag)}
-                          />
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              removeTag(tag)
+                            }}
+                            className="ml-1 hover:bg-secondary-foreground/10 rounded-full p-0.5 transition-colors"
+                            aria-label={`${tag} etiketini kaldır`}
+                          >
+                            <X className="h-3 w-3" />
+                          </button>
                         </Badge>
                       ))}
                     </div>
@@ -596,10 +604,18 @@ export default function EditBlogPost() {
                       {metaKeywords.map((keyword) => (
                         <Badge key={keyword} variant="outline" className="flex items-center gap-1">
                           {keyword}
-                          <X
-                            className="h-3 w-3 cursor-pointer"
-                            onClick={() => removeMetaKeyword(keyword)}
-                          />
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              removeMetaKeyword(keyword)
+                            }}
+                            className="ml-1 hover:bg-secondary-foreground/10 rounded-full p-0.5 transition-colors"
+                            aria-label={`${keyword} anahtar kelimesini kaldır`}
+                          >
+                            <X className="h-3 w-3" />
+                          </button>
                         </Badge>
                       ))}
                     </div>
